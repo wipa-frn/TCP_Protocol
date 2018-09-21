@@ -1,5 +1,10 @@
+/*  Thikamporn Simud 5910401033
+    Wipawadee Monkhut 5910406451
+    SEC 1
+ */
 import java.io.*;
 import java.net.*;
+
 public class TCP_Client {
     public static void main(String[] args) throws Exception
     {

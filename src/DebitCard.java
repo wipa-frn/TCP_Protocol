@@ -1,3 +1,7 @@
+/*  Thikamporn Simud 5910401033
+    Wipawadee Monkhut 5910406451
+    SEC 1
+ */
 public class DebitCard {
     private String numberDebit;
     private String numberCVV;

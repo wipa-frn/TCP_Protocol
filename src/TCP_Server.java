@@ -1,10 +1,15 @@
+/*  Thikamporn Simud 5910401033
+    Wipawadee Monkhut 5910406451
+    SEC 1
+ */
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
 public class TCP_Server {
 
-    private static User user1 = new User("FERN","123456", new DebitCard("1234567890123456","121"));
+    //User information
+    private static User user1 = new User("Wipa","123456", new DebitCard("1234567890123456","121"));
 
     public static void main(String[] args) throws Exception {
 
