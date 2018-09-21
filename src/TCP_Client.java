@@ -1,5 +1,3 @@
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-
 import java.io.*;
 import java.net.*;
 public class TCP_Client {
@@ -10,9 +8,30 @@ public class TCP_Client {
         DataOutputStream dOut = new DataOutputStream(connectS.getOutputStream());
         BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
         DataInputStream dIn=new DataInputStream(connectS.getInputStream());
+        try {
+            while (true) {
+                String sendMassage = br.readLine();
+                dOut.writeUTF(sendMassage);
 
-        while(true) {
-            String sendMassage = br.readLine();
+                //read from server
+                String message = dIn.readUTF();
+                if (!message.equals("")) System.out.println("Server: " + message);
+                else if (message.matches(connectS.getLocalAddress().toString())) {
+                    dOut.writeUTF("EXIT");
+                    dOut.flush();
+                    break;
+                }
+            }
+        }
+        catch (EOFException e) {
+            e.printStackTrace();
+        }
+        finally {
+            connectS.close();
+        }
+
+        /*while(true) {
+            *//*String sendMassage = br.readLine();
             dOut.writeUTF(sendMassage);
 
             //read from server
@@ -22,9 +41,9 @@ public class TCP_Client {
                 dOut.writeUTF("EXIT");
                 dOut.flush();
                 break;
-            }
+            }*//*
 
-            /*if(sendMassage.equals("GOODBYE")) {
+            *//*if(sendMassage.equals("GOODBYE")) {
                 massage = dIn.readUTF();
                 System.out.println(massage);
 
@@ -32,11 +51,11 @@ public class TCP_Client {
             else if (sendMassage.equals("EXIT")){
                 dOut.flush();
                 break;
-            }*/
+            }*//*
 
 
-        }
-        connectS.close();
+        }*/
+
     }
 
 }
